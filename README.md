@@ -1,8 +1,6 @@
-TAMU312
-=======
-Robert (Bob) Timm
-816006938
-bobtimm@tamu.edu
+TAMU 312
+========
+Robert (Bob) Timm | 816006938 | bobtimm@tamu.edu
 
 How-To Run
 ==========
