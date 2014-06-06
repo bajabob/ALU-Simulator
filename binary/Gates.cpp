@@ -1,5 +1,5 @@
 /*
- * Gates.h
+ * Gates.cpp
  *
  *	Logic Gates [AND, OR, NOT]
  *	As well as a few convenience functions for debugging.

@@ -13,13 +13,16 @@
 #include <iostream>
 #include "binary/Gates.h"
 #include "binary/BinFunctions.h"
+#include "byte/ByteFunctions.h"
 
 using namespace std;
 
 int main()
 {
 	Gates g;
-	BinFunctions bf( &g );
+	BinFunctions binf( &g );
+	ByteFunctions bytef ( &g );
+
 
 	/**
 	 * Test Gate Functions
@@ -29,5 +32,10 @@ int main()
 	/**
 	 * Test Binary Functions
 	 */
-	bf.test();
+	binf.test();
+
+	/**
+	 * Test Byte Functions
+	 */
+	bytef.test();
 }
