@@ -1,8 +1,11 @@
 /*
  * BinFunctions.h
  *
- *  Created on: Jun 6, 2014
- *      Author: bob
+ * Problem #1: Binary Functions
+ *
+ * 		Author: Bob Timm
+ *      GitHub: BajaBob
+ *      CSCE 312
  */
 
 #ifndef BINFUNCTIONS_H_

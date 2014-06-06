@@ -1,12 +1,17 @@
 /*
- * Basic.h
+ * Gates.h
+ *
+ *	Logic Gates [AND, OR, NOT]
+ *	As well as a few convenience functions for debugging.
  *
  *  Created on: Jun 5, 2014
- *      Author: bob
+ *      Author: Bob Timm
+ *      GitHub: BajaBob
+ *      CSCE 312
  */
 
-#ifndef BASIC_H_
-#define BASIC_H_
+#ifndef GATES_H_
+#define GATES_H_
 
 #include <iostream>
 using namespace std;
@@ -87,4 +92,4 @@ public:
 
 };
 
-#endif /* BASIC_H_ */
+#endif /* GATES_H_ */

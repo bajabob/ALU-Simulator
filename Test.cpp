@@ -1,8 +1,13 @@
 /*
  * Test.cpp
  *
+ * Test all functions and gate logic. Over time this file will
+ * adopt a menu for additional functonality.
+ *
  *  Created on: Jun 5, 2014
- *      Author: bob
+ *      Author: Bob Timm
+ *      GitHub: BajaBob
+ *      CSCE 312
  */
 
 #include <iostream>
