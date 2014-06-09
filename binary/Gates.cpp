@@ -14,6 +14,8 @@
 
 void Gates::test()
 {
+	cout << "Gate Functions" << endl;
+
 	cout << "And(1, 0): ";
 	print( And(true, false));
 
@@ -40,5 +42,7 @@ void Gates::test()
 
 	cout << "Should equal total # of calls above: " << endl;
 	printFunctionCount();
+
+	cout << endl << endl;
 }
 

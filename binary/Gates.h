@@ -52,11 +52,11 @@ public:
 	{
 		if(a)
 		{
-			cout << "TRUE" << endl;
+			cout << "1" << endl;
 		}
 		else
 		{
-			cout << "FALSE" << endl;
+			cout << "0" << endl;
 		}
 	}
 

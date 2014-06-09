@@ -21,12 +21,13 @@ int main()
 {
 	Gates g;
 	BinFunctions binf( &g );
-	ByteFunctions bytef ( &g );
+	ByteFunctions bytef ( &g, &binf );
 
 
 	/**
 	 * Test Gate Functions
 	 */
+	cout << endl << endl;
 	g.test();
 
 	/**

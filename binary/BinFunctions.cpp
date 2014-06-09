@@ -12,6 +12,8 @@
 
 void BinFunctions::test()
 {
+	cout << "Binary Functions" << endl;
+
 	cout << "XOR(1, 1): ";
 	g->print( XOR(true, true));
 
@@ -74,4 +76,6 @@ void BinFunctions::test()
 
 	cout << "Equal(1, 1): ";
 	g->print( Equal(true, true));
+
+	cout << endl << endl;
 }
