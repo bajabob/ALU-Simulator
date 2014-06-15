@@ -37,8 +37,8 @@ public:
 	bool Mux(bool operation, bool output_if_true, bool output_if_false)
 	{
 		return g->Or(
-					g->And( g->Not(operation), output_if_true),
-					g->And( operation, output_if_false));
+					g->And( g->Not(operation), output_if_false),
+					g->And( operation, output_if_true));
 	}
 
 	bool Sum(bool a, bool b)
