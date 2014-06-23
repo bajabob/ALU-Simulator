@@ -32,6 +32,27 @@ bool* Registry::getRegistryValue(bool* output, bool address[8])
 	return output;
 }
 
+bool* Registry::getInstruction(bool* output, bool address[8])
+{
+	int i = bytef->getValueInDecimal(address);
+
+	output[0] = instructionMemory[i][0];
+	output[1] = instructionMemory[i][1];
+	output[2] = instructionMemory[i][2];
+	output[3] = instructionMemory[i][3];
+
+	output[4] = instructionMemory[i][4];
+	output[5] = instructionMemory[i][5];
+	output[6] = instructionMemory[i][6];
+	output[7] = instructionMemory[i][7];
+
+	cout << "Instruction Memory(" << i << ") = ";
+	bytef->printValue(instructionMemory[i]);
+	cout << endl;
+
+	return output;
+}
+
 void Registry::setRegistryValue(bool address[8], bool value[8])
 {
 	int i = bytef->getValueInDecimal(address);
@@ -86,7 +107,7 @@ void Registry::instructionFetch()
 	bool t[8];
 	bool localOut[8];
 	bool four[8] = {false, false, false, false, false, true, false, false};
-	getRegistryValue(localOut, PC);
+	getInstruction(localOut, PC);
 	IR[0] = localOut[0];
 	IR[1] = localOut[1];
 	IR[2] = localOut[2];
@@ -98,7 +119,7 @@ void Registry::instructionFetch()
 	IR[7] = localOut[7];
 
 	bytef->Addu(t, four, PC);
-	getRegistryValue(localOut, t);
+	getInstruction(localOut, t);
 
 	IR[8] = localOut[0];
 	IR[9] = localOut[1];
@@ -111,7 +132,7 @@ void Registry::instructionFetch()
 	IR[15] = localOut[7];
 
 	bytef->Addu(t, four, t);
-	getRegistryValue(localOut, t);
+	getInstruction(localOut, t);
 
 	IR[16] = localOut[0];
 	IR[17] = localOut[1];
@@ -124,7 +145,7 @@ void Registry::instructionFetch()
 	IR[23] = localOut[7];
 
 	bytef->Addu(t, four, t);
-	getRegistryValue(localOut, t);
+	getInstruction(localOut, t);
 
 	IR[24] = localOut[0];
 	IR[25] = localOut[1];
@@ -136,6 +157,94 @@ void Registry::instructionFetch()
 	IR[30] = localOut[6];
 	IR[31] = localOut[7];
 }
+
+
+void Registry::instructionDecode()
+{
+	// load op
+	op[0] = IR[0];
+	op[1] = IR[1];
+	op[2] = IR[2];
+	op[3] = IR[3];
+
+	op[4] = IR[4];
+	op[5] = IR[5];
+	op[6] = IR[6];
+	op[7] = IR[7];
+
+	// load rs
+	rs[0] = IR[8];
+	rs[1] = IR[9];
+	rs[2] = IR[10];
+	rs[3] = IR[11];
+
+	rs[4] = IR[12];
+	rs[5] = IR[13];
+	rs[6] = IR[14];
+	rs[7] = IR[15];
+	// load values in reg to rs
+	getRegistryValue(rs, rs);
+
+	rt[0] = IR[16];
+	rt[1] = IR[17];
+	rt[2] = IR[18];
+	rt[3] = IR[19];
+
+	rt[4] = IR[20];
+	rt[5] = IR[21];
+	rt[6] = IR[22];
+	rt[7] = IR[23];
+	// load values in reg to rt
+	getRegistryValue(rt, rt);
+
+	// load rd
+	rd[0] = IR[24];
+	rd[1] = IR[25];
+	rd[2] = IR[26];
+	rd[3] = IR[27];
+
+	rd[4] = IR[28];
+	rd[5] = IR[29];
+	rd[6] = IR[30];
+	rd[7] = IR[31];
+}
+
+void Registry::execution()
+{
+	bytef->ZeroOut(exeResult);
+	bytef->ALU(exeResult, op, rs, rt);
+}
+
+void Registry::store()
+{
+	bool lw[8] = {false, false, false, false, true, true, true, false};
+	if(bytef->Equal(op, lw))
+	{
+		mem(rd, rs, true, false);
+	}
+
+	bool sw[8] = {false, false, false, false, true, true, true, true};
+	if(bytef->Equal(op, sw))
+	{
+		mem(rs, rd, false, true);
+	}
+}
+
+void Registry::writeback()
+{
+	int reg = bytef->getValueInDecimal(rd);
+
+	registry[reg][0] = exeResult[0];
+	registry[reg][1] = exeResult[1];
+	registry[reg][2] = exeResult[2];
+	registry[reg][3] = exeResult[3];
+
+	registry[reg][4] = exeResult[4];
+	registry[reg][5] = exeResult[5];
+	registry[reg][6] = exeResult[6];
+	registry[reg][7] = exeResult[7];
+}
+
 
 /**
  * Call using -> ifstream ifs ("some_code.txt");

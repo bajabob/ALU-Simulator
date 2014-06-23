@@ -30,6 +30,8 @@ private:
 
 	ByteFunctions* bytef;
 
+	bool op[8], rs[8], rt[8], rd[8], exeResult[8];
+
 	bool registry[16][8];
 
 	bool dataMemory[16][8];
@@ -55,6 +57,10 @@ public:
 	void resetPC();
 	void addPC(bool addressOffset[8]);
 	void instructionFetch();
+	void instructionDecode();
+	void execution();
+	void store();
+	void writeback();
 
 	void initializeInstructionMemory(ifstream& fp);
 	vector<string> explode(const string& str, const char& ch);
@@ -67,6 +73,7 @@ public:
 
 
 	bool* getRegistryValue(bool* output, bool address[8]);
+	bool* getInstruction(bool* output, bool address[8]);
 	void setRegistryValue(bool address[8], bool value[8]);
 
 	void incrementPC(); // PC = PC + 4
