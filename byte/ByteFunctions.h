@@ -14,6 +14,7 @@
 #include "../binary/Gates.h"
 #include "../binary/BinFunctions.h"
 #include <cmath>
+#include <string>
 
 class ByteFunctions
 {
@@ -47,6 +48,8 @@ public:
 	void writeValue(bool* byte, int offset, bool value);
 	void printValue(bool byte[8]);
 	void printValueInDecimal(bool byte[8]);
+	int getValueInDecimal(bool byte[8]);
+	void stringToByte(bool* byte, string in);
 
 	bool* Mux(bool* output, bool operation, bool a[8], bool b[8]);
 	bool* Addu(bool* output, bool a[8], bool b[8]);

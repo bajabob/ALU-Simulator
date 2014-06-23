@@ -45,6 +45,10 @@ void ByteFunctions::printValue(bool byte[8])
 }
 void ByteFunctions::printValueInDecimal(bool byte[8])
 {
+	cout << getValueInDecimal(byte);
+}
+int ByteFunctions::getValueInDecimal(bool byte[8])
+{
 	int total = 0;
 	for(int i = 0; i < 8; ++i)
 	{
@@ -52,7 +56,7 @@ void ByteFunctions::printValueInDecimal(bool byte[8])
 			total += pow(2, 7-i);
 		}
 	}
-	cout << total;
+	return total;
 }
 
 bool* ByteFunctions::Mux(bool* output, bool operation, bool a[8], bool b[8])
@@ -501,6 +505,21 @@ bool* ByteFunctions::ALU(bool* output, bool instruction[8], bool a[8], bool b[8]
 	Mux(output, Equal(instruction, mult), Mult(temp, a, b), output);
 
 	return output;
+}
+
+void ByteFunctions::stringToByte(bool* byte, string in)
+{
+	for(int i = 0; i < 8; ++i)
+	{
+		if(in[i] == '1')
+		{
+			byte[i] = true;
+		}
+		else
+		{
+			byte[i] = false;
+		}
+	}
 }
 
 void ByteFunctions::CheckForException(bool* byte)

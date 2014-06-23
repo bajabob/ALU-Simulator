@@ -14,6 +14,7 @@
 #include "binary/Gates.h"
 #include "binary/BinFunctions.h"
 #include "byte/ByteFunctions.h"
+#include "registry/Registry.h"
 
 using namespace std;
 
@@ -22,6 +23,7 @@ int main()
 	Gates g;
 	BinFunctions binf( &g );
 	ByteFunctions bytef ( &g, &binf );
+	Registry reg(&g, &binf, &bytef);
 
 
 	/**
@@ -39,4 +41,9 @@ int main()
 	 * Test Byte Functions
 	 */
 	bytef.test();
+
+	/**
+	 * Test Reg Functions
+	 */
+	reg.test();
 }
