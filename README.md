@@ -1,6 +1,8 @@
-TAMU 312
-========
-Robert (Bob) Timm | 816006938 | bobtimm@tamu.edu
+ALU Simulator
+=============
+Had to write this project for an undergraduate computer science course I took on computer organization. Written in C++ this simulator takes the three basic gates and scales up through bit operations to byte operations. There is also a MIPS instruction set example as well.
+
+Robert (Bob) Timm | bajabob.tx@gmail.com
 
 How-To Run
 ==========
@@ -8,8 +10,3 @@ How-To Run
 2. Traverse to directory via shell
 3. Type "Make"
 4. Type "./test"
-
-Answers To Questions
-====================
-Problem #6-C: Given the size to the inputs above, how many registry values can we handle if we had the ability to increase the memory size?
-(Memory Size)/4 = # Values, Such that inputs are broken into 8-bit sizes.
